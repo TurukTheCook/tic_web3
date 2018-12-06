@@ -28,6 +28,11 @@ class TraductionTarget
      */
     private $traductionSource;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $target;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +58,18 @@ class TraductionTarget
     public function setTraductionSource(?TraductionSource $traductionSource): self
     {
         $this->traductionSource = $traductionSource;
+
+        return $this;
+    }
+
+    public function getTarget(): ?string
+    {
+        return $this->target;
+    }
+
+    public function setTarget(string $target): self
+    {
+        $this->target = $target;
 
         return $this;
     }

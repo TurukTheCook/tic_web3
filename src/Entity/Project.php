@@ -35,6 +35,11 @@ class Project
      */
     private $traductionSources;
 
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->traductionSources = new ArrayCollection();
@@ -96,6 +101,18 @@ class Project
                 $traductionSource->setProjectId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
