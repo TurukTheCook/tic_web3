@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a Project{% endblock %}
+
+{% block body %}
+    <form method="post">
+        <div class="d-flex justify-content-center">
+            <div class="mt-3">
+                <h1 class="h3 mb-3 font-weight-normal">Create a Project</h1>
+
+                <div class="form-group mb-2">
+                    <label class="mr-2" for="inputName">Project name</label>
+                    <input type="text" name="projectName" id="inputName" class="form-control" placeholder="Enter a name.." required="required" autofocus="autofocus">
+                </div>
+                <div class="form-group">
+                    <label class="mr-2" for="inputLang">Project lang</label>
+                    <select name="projectLangCode" id="inputLang" class="form-control" required="required">
+                        {% for lang in langs %}
+                            <option value="{{ lang.id }}">{{ lang.langCode }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button class="btn btn-block btn-outline-primary mt-3" type="submit">
+                    Create
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
