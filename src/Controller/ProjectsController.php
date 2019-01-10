@@ -74,4 +74,16 @@ class ProjectsController extends AbstractController
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+
+    /**
+     * @Route("/projects/", name="project_delete")
+     */
+    public function deleteProject(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $repository->find($id);
+        /** @var $project SoftDelete */
+        $em->setInvisibility($project);
+        $em->flush();
+    }
 }
