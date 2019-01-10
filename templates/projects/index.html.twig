@@ -27,6 +27,7 @@
                         <td>{{ project.userId.username }}</td>
                         <td>{{ project.langCode.langCode }}</td>
                         <td><a href="{{ asset('uploads/files/' ~ project.file) }}" download>Download</a></td>
+                        <td><button class="btn btn-outline-primary mb-3" onclick="location.href = '{{ path('project_delete') }}';">Delete a Project</button></td>
                     </tr>
                 {% endfor %}
             </tbody>
