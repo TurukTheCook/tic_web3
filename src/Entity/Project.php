@@ -55,11 +55,6 @@ class Project
         $this->traductionSources = new ArrayCollection();
     }
 
-    public function __construct()
-    {
-        $this->makeInvisible = true;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -142,18 +137,6 @@ class Project
         $this->file = $file;
 
         return $this;
-    }
-
-    public function getInvisibility()
-    {
-      return $this->makeInvisible;
-    }
-
-    public function setInvisibility()
-    {
-      $this->project = $project;
-
-      return $this;
     }
 
 }

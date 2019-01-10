@@ -31,7 +31,7 @@ class ProjectsController extends AbstractController
     {
         $langsRepo = $this->getDoctrine()->getRepository(LangCode::class);
         $langs = $langsRepo->findAll();
-        
+
         if ($request->isMethod('POST')) {
             $projectName = $request->request->get('projectName');
             $projectLangId = $request->request->get('projectLangCode');
@@ -50,7 +50,7 @@ class ProjectsController extends AbstractController
                 // ... handle exception if something happens during file upload
                 return $this->render('projects/create.html.twig', ['langs' => $langs, 'error' => $e]);
             }
-            
+
             $project = new Project();
             $project->setName($projectName);
             $project->setLangCode($projectLangCode);
@@ -61,7 +61,7 @@ class ProjectsController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('projects');
         }
-        
+
         return $this->render('projects/create.html.twig', ['langs' => $langs, 'error' => null]);
     }
 
