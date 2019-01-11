@@ -49,16 +49,17 @@ class Project
      */
     private $file;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $invisible;
+
 
     public function __construct()
     {
         $this->traductionSources = new ArrayCollection();
+        $this->invisible = 0;
     }
-
-    // public function __construct()
-    // {
-    //     $this->makeInvisible = true;
-    // }
 
     public function getId(): ?int
     {
@@ -144,15 +145,15 @@ class Project
         return $this;
     }
 
-    public function getInvisibility()
+    public function getInvisible(): ?bool
     {
-      return $this->makeInvisible;
+        return $this->invisible;
     }
 
-    public function setInvisibility()
+    public function setInvisible(bool $invisible): self
     {
-      $this->project = $project;
+        $this->invisible = $invisible;
 
-      return $this;
+        return $this;
     }
 }

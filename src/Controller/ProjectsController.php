@@ -76,14 +76,15 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/projects/", name="project_delete")
+     * @Route("/projects/{id}/delete", name="project_delete")
      */
-    public function deleteProject(Request $request, $id)
+    public function deleteProject($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $project = $repository->find($id);
-        /** @var $project SoftDelete */
-        $em->setInvisibility($project);
+        $projectsRepo = $this->getDoctrine()->getRepository(Project::class);
+        $project = $projectsRepo->find($id);
+        $project->setInvisible(1);
         $em->flush();
+        return $this->redirectToRoute('profile');
     }
 }
